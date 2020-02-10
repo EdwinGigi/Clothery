@@ -14,5 +14,20 @@ namespace Clothery_Test
 
             Assert.IsNotNull(AProduct);
         }
+
+        [TestMethod]
+        public void IsAvailableOK()
+        {
+            clsProduct AProduct = new clsProduct();
+
+            Boolean Testdata = true;
+            
+            AProduct.IsAvailable = Testdata;
+
+            Assert.AreEqual(AProduct.IsAvailable, Testdata);
+
+    }
+
+
     }
 }
