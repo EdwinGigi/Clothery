@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29709.97
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.645
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clothery_Back_Office", "Clothery_Back_Office\Clothery_Back_Office.csproj", "{7839B690-A419-441B-A3D6-9D0062DC65E3}"
 EndProject
@@ -31,8 +31,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clothery_Test", "Clothery_T
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clothery_Classes", "Clothery_Classes\Clothery_Classes.csproj", "{0F63C16B-7B69-4E9C-B37E-0D60A3A35F40}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tstCustomer", "tstCustomer\tstCustomer.csproj", "{0CE9D569-61C1-46B6-956C-856860904E3D}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,10 +53,6 @@ Global
 		{0F63C16B-7B69-4E9C-B37E-0D60A3A35F40}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0F63C16B-7B69-4E9C-B37E-0D60A3A35F40}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0F63C16B-7B69-4E9C-B37E-0D60A3A35F40}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0CE9D569-61C1-46B6-956C-856860904E3D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0CE9D569-61C1-46B6-956C-856860904E3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0CE9D569-61C1-46B6-956C-856860904E3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0CE9D569-61C1-46B6-956C-856860904E3D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
