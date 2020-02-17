@@ -9,6 +9,9 @@ public partial class _Default : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        clsCustomer AnCustomer = new clsCustomer();
+        AnCustomer.CustomerName = txtCustomerName.text;
+        Session["AnCustomer"] = AnCustomer;
+        Response.Redirect("CustomerViewer.aspx");
     }
 }
