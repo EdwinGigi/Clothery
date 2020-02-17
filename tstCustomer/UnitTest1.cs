@@ -7,10 +7,14 @@ namespace tstCustomer
     public class UnitTest1
     {
         [TestMethod]
-        public void InstanceOK()
+        public void ActivePropertyOK()
         {
             clsCustomer AnCustomer = new clsCustomer();
-            Assert.IsNotNull(AnCustomer);
+            Boolean TestData = true;
+            AnCustomer.Active = TestData;
+            Assert.AreEqual(AnCustomer.Active, TestData);
+
+
 
         }
     }
