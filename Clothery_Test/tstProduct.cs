@@ -119,6 +119,179 @@ namespace Clothery_Test
             //test to see that the two values are the same
             Assert.AreEqual(AProduct.Next_Delivery, TestData);
         }
+        [TestMethod]
+        public void FindMethodOK()
+        {
+            //create an instance of the class we want to create
+            clsProduct AProduct = new clsProduct();
+            //create some test data to assign to the property
+            Boolean Found = false;
 
+            Int32 Product_ID = 1;
+
+            Found = AProduct.Find(Product_ID);
+            Assert.IsTrue(Found);
+        }
+        [TestMethod]
+        public void TestProduct_IDFound()
+        {
+            //create an instance of the class we want to create
+            clsProduct AProduct = new clsProduct();
+            //create some test data to assign to the property
+            Boolean Found = false;
+            Boolean OK = true;
+
+            Int32 Product_ID = 21;
+        
+            Found = AProduct.Find(Product_ID);
+
+            if (AProduct.Product_ID != 21)
+                {
+                OK = false;
+            }
+
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestNameFound()
+        {
+            //create an instance of the class we want to create
+            clsProduct AProduct = new clsProduct();
+
+            Boolean Found = false;
+            Boolean OK = true;
+
+            Int32 Product_ID = 21;
+
+            Found = AProduct.Find(Product_ID);
+
+            if (AProduct.Name != "Dave")
+            {
+                OK = false;
+            }
+
+            Assert.IsTrue(OK);
+        }
+        [TestMethod]
+        public void TestTypeFound()
+        {
+            //create an instance of the class we want to create
+            clsProduct AProduct = new clsProduct();
+
+            Boolean Found = false;
+            Boolean OK = true;
+
+            Int32 Product_ID = 21;
+
+            Found = AProduct.Find(Product_ID);
+
+            if (AProduct.Type != "Cape")
+            {
+                OK = false;
+            }
+
+            Assert.IsTrue(OK);
+        }
+        [TestMethod]
+        public void TestColourFound()
+        {
+            //create an instance of the class we want to create
+            clsProduct AProduct = new clsProduct();
+
+            Boolean Found = false;
+            Boolean OK = true;
+
+            Int32 Product_ID = 21;
+
+            Found = AProduct.Find(Product_ID);
+
+            if (AProduct.Colour != "yellow")
+            {
+                OK = false;
+            }
+
+            Assert.IsTrue(OK);
+        }
+        [TestMethod]
+        public void TestCostFound()
+        {
+            //create an instance of the class we want to create
+            clsProduct AProduct = new clsProduct();
+
+            Boolean Found = false;
+            Boolean OK = true;
+
+            Int32 Product_ID = 21;
+
+            Found = AProduct.Find(Product_ID);
+
+            if (AProduct.Cost != 12)
+            {
+                OK = false;
+            }
+
+            Assert.IsTrue(OK);
+        }
+        [TestMethod]
+        public void TestStock_CountFound()
+        {
+            //create an instance of the class we want to create
+            clsProduct AProduct = new clsProduct();
+
+            Boolean Found = false;
+            Boolean OK = true;
+
+            Int32 Product_ID = 21;
+
+            Found = AProduct.Find(Product_ID);
+
+            if (AProduct.Stock_Count != 12)
+            {
+                OK = false;
+            }
+
+            Assert.IsTrue(OK);
+        }
+        [TestMethod]
+        public void TestIs_AvailableFound()
+        {
+            //create an instance of the class we want to create
+            clsProduct AProduct = new clsProduct();
+
+            Boolean Found = false;
+            Boolean OK = true;
+
+            Int32 Product_ID = 21;
+
+            Found = AProduct.Find(Product_ID);
+
+            if (AProduct.Is_Available != false)
+            {
+                OK = false;
+            }
+
+            Assert.IsTrue(OK);
+        }
+        [TestMethod]
+        public void TestNext_DeliveryFound()
+        {
+            //create an instance of the class we want to create
+            clsProduct AProduct = new clsProduct();
+
+            Boolean Found = false;
+            Boolean OK = true;
+
+            Int32 Product_ID = 21;
+
+            Found = AProduct.Find(Product_ID);
+
+            if (AProduct.Next_Delivery != Convert.ToDateTime("27/02/2021"))
+            {
+                OK = false;
+            }
+
+            Assert.IsTrue(OK);
+        }
     }
 }
