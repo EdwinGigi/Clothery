@@ -1,12 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Clothery_Classes
 {
-   public class clsOrder
+    public class clsOrder
     {
+        public bool IsPaid;
+        public DateTime OrderDate;
+        public int OrderId;
+        public int CustomerId;
+        public string ShippingAddress;
     }
 }
