@@ -212,4 +212,3 @@ namespace Clothery_Classes
             }
         }
     }
-}
