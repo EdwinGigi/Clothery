@@ -6,7 +6,7 @@ namespace Clothery_Classes
         private Boolean mShipped;
         private String mDescription;
         private String mSize;
-        private Double mPrice;
+        private Decimal mPrice;
         private Int32 mQuantity;
         private Int32 mProductId;
         private Int32 mOrderId;
@@ -47,7 +47,7 @@ namespace Clothery_Classes
                 mSize = value;
             }
         }
-        public double Price
+        public decimal Price
         {
             get
             {
@@ -104,7 +104,29 @@ namespace Clothery_Classes
             }
         }
 
+        public bool Find(int OrderLineId)
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@OrderLineId", OrderLineId);
+            DB.Execute("sproc_tbl_OrderLine_FilterByOrderLineId");
 
-
+            if (DB.Count == 1)
+            {
+                mOrderLineId = Convert.ToInt32(DB.DataTable.Rows[0]["OrderLineId"]);
+                mOrderId = Convert.ToInt32(DB.DataTable.Rows[0]["OrderId"]);
+                mProductId = Convert.ToInt32(DB.DataTable.Rows[0]["ProductId"]);
+                mQuantity = Convert.ToInt32(DB.DataTable.Rows[0]["Quanity"]);
+                mPrice = Convert.ToDecimal(DB.DataTable.Rows[0]["Price"]);
+                mSize = Convert.ToString(DB.DataTable.Rows[0]["Size"]);
+                mDescription = Convert.ToString(DB.DataTable.Rows[0]["Description"]);
+                mShipped = Convert.ToBoolean(DB.DataTable.Rows[0]["Shipped"]);
+              
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }

@@ -90,6 +90,11 @@ namespace Clothery_Classes
                 return false;
             }
         }
+      //  public string Valid(string ShippingAddress,
+       //     DateTime OrderDate)
+       // {
+
+       // }
 
    
 

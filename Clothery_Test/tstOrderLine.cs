@@ -7,6 +7,8 @@ namespace Clothery_Test
     [TestClass]
     public class tstOrderLine
     {
+       
+
         [TestMethod]
         public void InstanceOK()
         {
@@ -84,7 +86,7 @@ namespace Clothery_Test
             //create an instance of the class we want to create
             clsOrderLine AnOrderLine = new clsOrderLine();
             //create some test data to assign to the property
-            Double TestData = 10.99;
+            Decimal TestData = 10;
             //assign the data to the property
             AnOrderLine.Price = TestData;
             //test to see that the two values are the same
@@ -116,7 +118,175 @@ namespace Clothery_Test
             Assert.AreEqual(AnOrderLine.Description, TestData);
         }
 
+        [TestMethod]
+        public void FindMethodOK()
+        {
+            clsOrderLine AnOrderLine = new clsOrderLine();
+            Boolean Found = false;
+            Int32 OrderLineId = 1;
 
 
+            Found = AnOrderLine.Find(OrderLineId);
+
+            Assert.IsTrue(Found);
+
+        }
+
+        [TestMethod]
+        public void TestOrderLineIdNoFound()
+        {
+            clsOrderLine AnOrderLine = new clsOrderLine();
+            Boolean Found = false;
+            Boolean Ok = true;
+
+            Int32 OrderLineId = 1;
+            Found = AnOrderLine.Find(OrderLineId);
+
+            if (AnOrderLine.OrderLineId != 1)
+            {
+                Ok = false;
+            }
+            Assert.IsTrue(Ok);
+
+        }
+
+        [TestMethod]
+        public void TestOrderId()
+        {
+            clsOrderLine AnOrderLine = new clsOrderLine();
+            Boolean Found = false;
+            Boolean Ok = true;
+
+            Int32 OrderLineId = 1;
+            Found = AnOrderLine.Find(OrderLineId);
+
+            if (AnOrderLine.OrderId != 1)
+            {
+                Ok = false;
+            }
+            Assert.IsTrue(Ok);
+
+        }
+
+
+        [TestMethod]
+        public void TestProductId()
+        {
+            clsOrderLine AnOrderLine = new clsOrderLine();
+            Boolean Found = false;
+            Boolean Ok = true;
+
+            Int32 OrderLineId = 1;
+            Found = AnOrderLine.Find(OrderLineId);
+
+            if (AnOrderLine.ProductId != 10)
+            {
+                Ok = false;
+            }
+            Assert.IsTrue(Ok);
+
+        }
+
+        [TestMethod]
+        public void TestShippedFound()
+        {
+            //create an instance of the class we want to create
+            clsOrderLine AnOrderLine = new clsOrderLine();
+            //boolean variable to store the result of the search
+            Boolean Found = false;
+            //boolean variable to record if data is OK (assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method
+            Int32 OrderLineId = 1;
+            //invoke the method
+            Found = AnOrderLine.Find(OrderLineId);
+            //check the property
+            if (AnOrderLine.Shipped != true)
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestQuantity()
+        {
+            clsOrderLine AnOrderLine = new clsOrderLine();
+            Boolean Found = false;
+            Boolean Ok = true;
+
+            Int32 OrderLineId = 1;
+            Found = AnOrderLine.Find(OrderLineId);
+
+            if (AnOrderLine.Quantity != 1)
+            {
+                Ok = false;
+            }
+            Assert.IsTrue(Ok);
+
+        }
+
+        [TestMethod]
+        public void TestPrice()
+        {
+            clsOrderLine AnOrderLine = new clsOrderLine();
+            Boolean Found = false;
+            Boolean Ok = true;
+
+            Int32 OrderLineId = 1;
+            Found = AnOrderLine.Find(OrderLineId);
+
+            if (AnOrderLine.Price != 10)
+            {
+                Ok = false;
+            }
+            Assert.IsTrue(Ok);
+
+        }
+
+        [TestMethod]
+        public void TestDescription()
+        {
+            //create an instance of the class we want to create
+            clsOrderLine AnOrderLine = new clsOrderLine();
+            //boolean variable to store the result of the search
+            Boolean Found = false;
+            //boolean variable to record if data is OK (assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method
+            Int32 OrderLineId = 1;
+            //invoke the method
+            Found = AnOrderLine.Find(OrderLineId);
+            //check the property
+            if (AnOrderLine.Description != "White Hoodie")
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void Testsize()
+        {
+            //create an instance of the class we want to create
+            clsOrderLine AnOrderLine = new clsOrderLine();
+            //boolean variable to store the result of the search
+            Boolean Found = false;
+            //boolean variable to record if data is OK (assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method
+            Int32 OrderLineId = 1;
+            //invoke the method
+            Found = AnOrderLine.Find(OrderLineId);
+            //check the property
+            if (AnOrderLine.Size != "Medium")
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
     }
 }
