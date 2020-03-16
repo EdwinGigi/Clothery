@@ -3,15 +3,21 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace tstCustomer
 {
-    [TestClass]
-    public class UnitTest1
+    [TestMethod]
+    public void TestCustomerNoFound()
     {
-        [TestMethod]
-        public void InstanceOK()
+        clsCustomer AnCustomer = new clsCustomer();
+        Boolean Found = false;
+        Boolean OK = true;
+        Int32 CustomerId = 1;
+        Found = AnCustomer.Find(CustomerId);
+        if (AnCustomer.CustomerId !=1)
         {
-            clsCustomer AnCustomer = new clsCustomer();
-            Assert.IsNotNull(AnCustomer);
-
+            OK = false;
         }
+        Assert.IsTrue(OK);
     }
+
+        
+    
 }
