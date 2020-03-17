@@ -12,6 +12,21 @@ namespace tstCustomer
         private int mCustomerHomeNumber;
         private int mCustomerPostcode;
 
+        public bool Find (int CustomerId)
+        {
+            return true;
+        }
+
+
+        public bool Find (int CustomerId)
+        {
+            mCustomerId = 1;
+
+            return true;
+        }
+
+        public int CustomerId { get; set; }
+
         public bool CustomerOnlineStatus
         {
             get
@@ -103,6 +118,10 @@ namespace tstCustomer
                 return false;
             }
         }
-  
+
+        private class pubic
+        {
+        }
     }
+
 }
