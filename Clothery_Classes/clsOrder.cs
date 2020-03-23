@@ -90,11 +90,47 @@ namespace Clothery_Classes
                 return false;
             }
         }
-      //  public string Valid(string ShippingAddress,
-       //     DateTime OrderDate)
-       // {
+       public string Valid(string Shippingaddress, string Orderdate, string Customerid)
+                           
+            ///this function accepts 3 parameters for validation 
+            ///this function returns a string containing error message 
+            ///if no errors found, blank string is returned
+        {
+            //string variable to store the error
+            String Error = "";
+            //temporary variable to store date values
+            DateTime DateTemp;
 
-       // }
+            if (Shippingaddress.Length ==0)
+            {
+                Error = Error + "Shipping Address can not be blank : ";
+            }
+            if (Shippingaddress.Length > 50)
+            {
+                Error = Error + "Shipping Address should be less than 50characters";
+            }
+
+            try
+            {
+                DateTemp = Convert.ToDateTime(Orderdate);
+                if (DateTemp < DateTime.Now.Date)
+                {
+                    Error = Error + "The date cannot be in the past : ";
+                }
+                //check to see if the date is greater than today's date 
+                if (DateTemp > DateTime.Now.Date)
+                {
+                    //record the error
+                    Error = Error + "The date cannot be in the future : ";
+                }
+            }
+            catch
+            {
+                Error = Error + "The date was not a valid date : ";
+            }
+            //Return any error messages
+            return Error;
+        }
 
    
 

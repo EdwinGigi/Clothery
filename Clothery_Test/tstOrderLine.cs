@@ -86,7 +86,7 @@ namespace Clothery_Test
             //create an instance of the class we want to create
             clsOrderLine AnOrderLine = new clsOrderLine();
             //create some test data to assign to the property
-            Decimal TestData = 10;
+            Int32 TestData = 10;
             //assign the data to the property
             AnOrderLine.Price = TestData;
             //test to see that the two values are the same
@@ -123,7 +123,7 @@ namespace Clothery_Test
         {
             clsOrderLine AnOrderLine = new clsOrderLine();
             Boolean Found = false;
-            Int32 OrderLineId = 1;
+            Int32 OrderLineId = 18;
 
 
             Found = AnOrderLine.Find(OrderLineId);
@@ -139,10 +139,10 @@ namespace Clothery_Test
             Boolean Found = false;
             Boolean Ok = true;
 
-            Int32 OrderLineId = 1;
+            Int32 OrderLineId = 18;
             Found = AnOrderLine.Find(OrderLineId);
 
-            if (AnOrderLine.OrderLineId != 1)
+            if (AnOrderLine.OrderLineId != 18)
             {
                 Ok = false;
             }
@@ -157,7 +157,7 @@ namespace Clothery_Test
             Boolean Found = false;
             Boolean Ok = true;
 
-            Int32 OrderLineId = 1;
+            Int32 OrderLineId = 18;
             Found = AnOrderLine.Find(OrderLineId);
 
             if (AnOrderLine.OrderId != 1)
@@ -176,7 +176,7 @@ namespace Clothery_Test
             Boolean Found = false;
             Boolean Ok = true;
 
-            Int32 OrderLineId = 1;
+            Int32 OrderLineId = 18;
             Found = AnOrderLine.Find(OrderLineId);
 
             if (AnOrderLine.ProductId != 10)
@@ -197,7 +197,7 @@ namespace Clothery_Test
             //boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 OrderLineId = 1;
+            Int32 OrderLineId = 18;
             //invoke the method
             Found = AnOrderLine.Find(OrderLineId);
             //check the property
@@ -216,7 +216,7 @@ namespace Clothery_Test
             Boolean Found = false;
             Boolean Ok = true;
 
-            Int32 OrderLineId = 1;
+            Int32 OrderLineId = 18;
             Found = AnOrderLine.Find(OrderLineId);
 
             if (AnOrderLine.Quantity != 1)
@@ -234,7 +234,7 @@ namespace Clothery_Test
             Boolean Found = false;
             Boolean Ok = true;
 
-            Int32 OrderLineId = 1;
+            Int32 OrderLineId = 18;
             Found = AnOrderLine.Find(OrderLineId);
 
             if (AnOrderLine.Price != 10)
@@ -255,7 +255,7 @@ namespace Clothery_Test
             //boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 OrderLineId = 1;
+            Int32 OrderLineId = 18;
             //invoke the method
             Found = AnOrderLine.Find(OrderLineId);
             //check the property
@@ -277,7 +277,7 @@ namespace Clothery_Test
             //boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 OrderLineId = 1;
+            Int32 OrderLineId = 18;
             //invoke the method
             Found = AnOrderLine.Find(OrderLineId);
             //check the property

@@ -24,7 +24,7 @@ public partial class AnOrderLine : System.Web.UI.Page
         AnOrderLine.OrderId = Convert.ToInt32(txtOrderId.Text);
         AnOrderLine.ProductId = Convert.ToInt32(txtProductId.Text);
         AnOrderLine.Quantity = Convert.ToInt32(txtQuantity.Text);
-        AnOrderLine.Price = Convert.ToDecimal(txtPrice.Text);
+        AnOrderLine.Price = Convert.ToInt32(txtPrice.Text);
         AnOrderLine.Size = txtSize.Text;
         AnOrderLine.Description = txtDescription.Text;
         AnOrderLine.Shipped = Convert.ToBoolean(chkShipped);

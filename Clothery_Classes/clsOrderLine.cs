@@ -6,7 +6,7 @@ namespace Clothery_Classes
         private Boolean mShipped;
         private String mDescription;
         private String mSize;
-        private Decimal mPrice;
+        private Int32 mPrice;
         private Int32 mQuantity;
         private Int32 mProductId;
         private Int32 mOrderId;
@@ -47,7 +47,7 @@ namespace Clothery_Classes
                 mSize = value;
             }
         }
-        public decimal Price
+        public Int32 Price
         {
             get
             {
@@ -116,7 +116,7 @@ namespace Clothery_Classes
                 mOrderId = Convert.ToInt32(DB.DataTable.Rows[0]["OrderId"]);
                 mProductId = Convert.ToInt32(DB.DataTable.Rows[0]["ProductId"]);
                 mQuantity = Convert.ToInt32(DB.DataTable.Rows[0]["Quanity"]);
-                mPrice = Convert.ToDecimal(DB.DataTable.Rows[0]["Price"]);
+                mPrice = Convert.ToInt32(DB.DataTable.Rows[0]["Price"]);
                 mSize = Convert.ToString(DB.DataTable.Rows[0]["Size"]);
                 mDescription = Convert.ToString(DB.DataTable.Rows[0]["Description"]);
                 mShipped = Convert.ToBoolean(DB.DataTable.Rows[0]["Shipped"]);
