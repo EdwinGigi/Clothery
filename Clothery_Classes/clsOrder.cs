@@ -91,17 +91,17 @@ namespace Clothery_Classes
             }
         }
        public string Valid(string Shippingaddress, string Orderdate, string Customerid)
-                           
+        {                 
             ///this function accepts 3 parameters for validation 
             ///this function returns a string containing error message 
             ///if no errors found, blank string is returned
-        {
+        
             //string variable to store the error
             String Error = "";
             //temporary variable to store date values
             DateTime DateTemp;
 
-            if (Shippingaddress.Length ==0)
+            if (Shippingaddress.Length == 0)
             {
                 Error = Error + "Shipping Address can not be blank : ";
             }

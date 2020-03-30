@@ -395,7 +395,7 @@ namespace Clothery_Test
             //string variable to store any error message
             String Error = "";
             //create a variable to store the test date data
-            DateTime TestDate;
+            DateTime TestDate; 
             //set the date totodays date
             TestDate = DateTime.Now.Date;
             //change the date to whatever the date is plus 100 years
