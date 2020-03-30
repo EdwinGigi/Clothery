@@ -184,5 +184,38 @@ namespace Clothery_Test
             Assert.AreEqual(0, FiltredShippingAddress.Count);
 
         }
+
+        [TestMethod]
+        public void ReportByShippingAddressTestDataFound()
+        {
+            //create an instance of the filtered data 
+            clsOrderCollection FilteredOrders = new clsOrderCollection();
+
+            //var to store the outcome 
+            Boolean OK = true;
+
+            //apply a Shipping Address that doesn't exist
+            FilteredOrders.ReportByShippingAddress("Moscow");
+
+            //Check that the correct number of records are found 
+            if (FilteredOrders.Count == 2)
+            {
+                //check that the first record is ID 
+                if (FilteredOrders.OrderList[0].OrderId != 9)
+                {
+                    OK = false;
+                }
+                //check that the first record is ID 
+                if (FilteredOrders.OrderList[1].OrderId != 18)
+                {
+                    OK = false;
+                }
+            }
+            else
+            {
+                //test to see that there are no records 
+                Assert.IsTrue(OK);
+            }
+        }
     }
 }

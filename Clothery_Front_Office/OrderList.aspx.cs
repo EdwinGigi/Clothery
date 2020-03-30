@@ -1,4 +1,5 @@
 ﻿using System;
+using Clothery_Classes;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -65,5 +66,45 @@ public partial class OrderList : System.Web.UI.Page
             lblError.Text = "Please select a record to delete from the list";
         }
 
+    }
+
+    
+
+    protected void btnApply_Click(object sender, EventArgs e)
+    {
+        //create an instance of the address collection 
+        clsOrderCollection ShipAddress = new clsOrderCollection();
+
+        ShipAddress.ReportByShippingAddress(txtShippinAddress.Text);
+        lstOrderList.DataSource = ShipAddress.OrderList;
+
+        //set the name of the primary key 
+        lstOrderList.DataValueField = "OrderId";
+
+        //set the name of the field to display 
+        lstOrderList.DataTextField = "ShippingAddress";
+
+        //bind the data to the list 
+        lstOrderList.DataBind();
+    }
+
+    protected void btnClear_Click(object sender, EventArgs e)
+    {
+        //create an instance of the address collection 
+        clsOrderCollection Orders = new clsOrderCollection();
+        Orders.ReportByShippingAddress("");
+
+        //clear any existing filter to tidy up the interface 
+        txtShippinAddress.Text = "";
+        lstOrderList.DataSource = Orders.OrderList;
+
+        //set the name of the primary key 
+        lstOrderList.DataValueField = "OrderId";
+
+        //set the name of the field to display 
+        lstOrderList.DataTextField = "ShippingAddress";
+
+        //bind the data to the list
+        lstOrderList.DataBind();
     }
 }

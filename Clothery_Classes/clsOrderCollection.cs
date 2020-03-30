@@ -48,72 +48,18 @@ namespace Clothery_Classes
             }
         }
 
-
+        //constructor for the class
         public clsOrderCollection()
         {
-            //create items of test data
-            clsOrder TestItem = new clsOrder();
-
-            //set it's properties 
-            TestItem.IsPaid = true;
-            TestItem.OrderDate = DateTime.Now.Date;
-            TestItem.OrderId = 1;
-            TestItem.ShippingAddress = "Street";
-            TestItem.CustomerId = 10;
-
-            //add the item to the test list 
-            mOrderList.Add(TestItem);
-
-            //re initialize the object for some new data 
-            TestItem = new clsOrder();
-
-            //set its properties 
-            TestItem.IsPaid = true;
-            TestItem.OrderDate = DateTime.Now.Date;
-            TestItem.OrderId = 2;
-            TestItem.ShippingAddress = "Another Street";
-            TestItem.CustomerId = 11;
-
-            //add the item to the test list 
-            mOrderList.Add(TestItem);
-
-
-
-            //var for the index 
-            Int32 Index = 0;
-
-            //var to store the record count 
-            Int32 RecordCount = 0;
-
-            //object for data conncetion 
-
+            //object for data connection
             clsDataConnection DB = new clsDataConnection();
 
             //execute the stored procedure 
             DB.Execute("sproc_tblOrder_SelectAll");
 
-            //get the count of records 
-            RecordCount = DB.Count;
-
-            //while there are records to process 
-            while (Index < RecordCount)
-            {
-                //create a blank address
-                clsOrder AnOrder = new clsOrder();
-
-                //read in the fields from the current record
-                AnOrder.OrderId = Convert.ToInt32(DB.DataTable.Rows[Index]["OrderId"]);
-                AnOrder.ShippingAddress = Convert.ToString(DB.DataTable.Rows[Index]["ShippingAddress"]);
-                AnOrder.OrderDate = Convert.ToDateTime(DB.DataTable.Rows[Index]["OrderDate"]);
-                AnOrder.CustomerId = Convert.ToInt32(DB.DataTable.Rows[Index]["CustomerId"]);
-                AnOrder.IsPaid = Convert.ToBoolean(DB.DataTable.Rows[Index]["IsPaid"]);
-
-                //add the record to the private data member 
-                mOrderList.Add(AnOrder);
-
-                //point at the next record
-                Index++;
-            }
+            //populate the array list with the data table
+            PopulateArray(DB);
+        
 
 
         }
@@ -179,6 +125,9 @@ namespace Clothery_Classes
 
             //Execute the store procedures
             DB.Execute("sproc_tblOrder_FilterByShippingAddress");
+
+            //poopulate the array list with the data table 
+            PopulateArray(DB);
 
         }
 
