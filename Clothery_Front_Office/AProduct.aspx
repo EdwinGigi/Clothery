@@ -9,39 +9,33 @@
 <body>
     <form id="form1" runat="server">
         <p>
-            Product ID<br /> <input name="ID" size="15" type="text" />
+            <asp:Label ID="LblID" runat="server" Text="Product ID" Width="100px"></asp:Label>
+            &nbsp;<asp:TextBox ID="TxtID" runat="server" Width="100px" ></asp:TextBox>
+            <br />
+            <asp:Label ID="LblName" runat="server" Text="Product ID" Width="100px"></asp:Label>
+            &nbsp;<asp:TextBox ID="TxtName" runat="server" Width="100px" ></asp:TextBox>
+            <br />  
+            <asp:Label ID="Lbltype" runat="server" Text="Product ID" Width="100px"></asp:Label>
+            &nbsp; <asp:TextBox ID="TxtType" runat="server" Width="100px" ></asp:TextBox>
+            <br />
+            
+        <br />        
+            Type<br /> <input name="txtType" size="15" type="text" />
+        <br />        
+            Colour<br /> <input name="txtColour" size="15" type="text" />
+       <br />        
+            Cost<br /> <input name="txtCost" size="15" type="text" />
+        <br />      
+            Stock Count<br /> <input name="txtStock_Count" size="15" type="text" />
+        <br />      
         <br />
-
-        
-            Name<br /> <input name="name" size="15" type="text" />
-        <br />
-
-        
-            Type<br /> <input name="Type" size="15" type="text" />
-        <br />
-
-        
-            Colour<br /> <input name="Colour" size="15" type="text" />
-       <br />
-
-        
-            Cost<br /> <input name="Cost" size="15" type="text" />
-        <br />
-
-      
-            Stock Count<br /> <input name="Stock_Count" size="15" type="text" />
-        <br />
-
-      
-            Is Available <input name="Is_Available" size="15" type="text" />
-       <br />
-
-        
-            Next Delivery <input name="Next_Delivery" size="15" type="text" />
+            <asp:CheckBox ID="ChkAvailable" runat="server" style="z-index: 1;" Text="Is Available" />
+       <br />        
+            Next Delivery <br /> <input name="txtNext_Delivery" size="15" type="text" />
         </p>
-
-        <input type="submit" value="Add" />
-        <input type="reset" /></p>
+        
+        <asp:Button ID="btnOK" runat="server" height="26px" Text="Add" width="61px" OnClick="btnOK_Click" />
+        <asp:Button ID="btnCancel" runat="server" style="z-index: 1;" Text="Cancel" height="26px" width="117px" OnClick="btnCancel_Click" />
 
     </form>
 </body>
