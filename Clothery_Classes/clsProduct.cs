@@ -110,19 +110,32 @@ namespace Clothery_Classes
             }
         }
 
-        public bool Find(int product_ID)
-        {
-            mProduct_ID = 21;
-            mName = "Dave";
-            mType = "Cape";
-            mColour = "yellow";
-            mCost = 12;
-            mStock_Count = 12;
-            mIs_Available = false;
-            mNext_Delivery = Convert.ToDateTime("27/02/2021");
-            //always return true
-            return true;
+        
+            public bool Find(int Product_ID)
+            {
 
-        }
+                clsDataConnection DB = new clsDataConnection();
+
+                DB.AddParameter("@ProductID", Product_ID);
+
+                DB.Execute("sproc_tblProduct_FilterByProductID");
+
+                if (DB.Count == 1)
+                {
+                    mProduct_ID = Convert.ToInt32(DB.DataTable.Rows[0]["ProductID"]);
+                    mName = Convert.ToString(DB.DataTable.Rows[0]["Name"]);
+                    mType = Convert.ToString(DB.DataTable.Rows[0]["Type"]);
+                    mColour = Convert.ToString(DB.DataTable.Rows[0]["Cost"]);
+                    mCost = Convert.ToInt32(DB.DataTable.Rows[0]["Colour"]);
+                    mStock_Count = Convert.ToInt32(DB.DataTable.Rows[0]["StockCount"]);
+                    mIs_Available = Convert.ToBoolean(DB.DataTable.Rows[0]["IsAvailable"]);
+                    mNext_Delivery = Convert.ToDateTime(DB.DataTable.Rows[0]["NextDelivery"]);
+                    return true;
+                }
+                else return false;
+
+
+            }
+        
     }
 }
