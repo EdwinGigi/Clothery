@@ -1,104 +1,111 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System.Linq;
+using System.Text;
+
 
 namespace tstCustomer
 {
-    [TestClass]
-    public class tstCustomer
+    public class clsCustomer
     {
-        [TestMethod]
-        public void InstanceOK()
+        private Int32 mCustomerID;
+        public int CustomerID
         {
-            //create an instance of the class we want to create
-            clsCustomer AnCustomer = new clsCustomer();
-            //test to see that it exists
-            Assert.IsNotNull(AnCustomer);
+            get
+            {
+                return mCustomerID;
+            }
+            set
+            {
+                mCustomrID = value;
+            }
+
+        }
+        private DateTime mCustomerDOB;
+        public DateTime CustomerDOB
+        {
+            get
+            {
+                return mCustomerDOB;
+            }
+            set
+            {
+                mCustomerDOB = value;
+            }
+        }
+        private string mCustomerAddress;
+        public string CustomerAddress
+        {
+            get
+            {
+                return mCustomerAddress;
+            }
+            set
+            {
+                mCustomerAddress = value;
+            }
+        }
+        private Int32 mCustomerHomeNumber;
+        public int CustomerHomeNumber
+        {
+            get
+            {
+                return mCustomerHomeNumber;
+            }
+            set
+            {
+                mCustomerHomeNumber = value;
+            }
+        }
+        private mCustomerPostcode
+        public string CustomerPostcode
+        {
+            get
+            {
+                return mCustomerPostcode;
+            }
+            set
+            { 
+                mCustomerPostcode = value;
+            }
+        }
+        private Boolean mCustomerStatus;
+        public bool CustomerStatus
+        {
+            get
+            {
+                return mCustomerStatus;
+            }
+            set
+            {
+                mCustomerStatus = value;
+            }
         }
 
-        [TestMethod]
-        public void CustomeID()
-        {
-            //create an instance of the class we want to create
-            clsCustomer AnCustomer = new clsCustomer();
-            //create some test data to assign to the property
-            Int32 TestData = 1;
-            //assign the data to the property
-            AnCustomer.ID = TestData;
-            //test to see that the two values are the same
-            Assert.AreEqual(AnCustomer.ID, TestData);
-        }
 
-        [TestMethod]
-        public void CustomerDOB()
+        public bool Find(int CustomerID)
         {
-            //create an instance of the class we want to create
-            clsCustomer AnCustomer = new clsCustomer();
-            //create some test data to assign to the property
-            DateTime TestData = DateTime.Now.Date;
-            //assign the data to the property
-            AnCustomer.DateAdded = TestData;
-            //test to see that the two values are the same
-            Assert.AreEqual(AnCustomer.DateAdded, TestData);
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@CustomerID", CustomerID);
+            DB.Execute("spoc_tblCustomer_FilterByCustomerID");
+            if (DB.Count == 1)
+            {
+                mCustomerID = Convert.ToInt32(DB.Dataable.rows[0]["CustomerId"]);
+                mCustomerDOB = Convert.ToDateTime(DB.DataTable.Rows[0]["CustomerDOB"]);
+                mCustomerAddress = Convert.ToString(DB.DataTable.Rows[0]["CustomerAddress"]);
+                mCustomerHomeNumber = Convert.ToInt32(DB.DataTable.Rows[0]["CustomerHomeNumber"]);
+                mCustomerPostcode = Convert.ToString(DB.DataTable.Rows[0]["PostCode"]);
+                mCustomerStatus = Convert.ToBoolean(DB.DataTable.Rows)[0]["CustomerStatus"]);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
 
-        [TestMethod]
-        public void CustomerAddress()
-        {
-            //create an instance of the class we want to create
-            clsCustomer AnCustomer = new clsCustomer();
-            //create some test data to assign to the property
-            Int32 TestData = 1; 
-            //assign the data to the property
-            AnCustomer.CustomerNo = TestData;
-            //test to see that the two values are the same
-            Assert.AreEqual(AnCustomer.CustomerNo, TestData);
-        }
 
-        [TestMethod]
-        public void CustomerHomeNumber()
-        {
-            //create an instance of the class we want to create
-            clsCustomer AnCustomer = new clsCustomer();
-            //create some test data to assign to the property
-            Int32 TestData = 1;
-            //assign the data to the property
-            AnCustomer.CustomerHomeNumber = TestData;
-            //test to see that the two values are the same
-            Assert.AreEqual(AnCustomer.CustomerHomeNumber, TestData);
-        }
-
-
-        [TestMethod]
-        public void CustomerPostcode()
-        {
-            //create an instance of the class we want to create
-            clsCustomer AnCustomer = new clsCustomer();
-            //create some test data to assign to the property
-            string TestData = "LE1 4AB";
-            //assign the data to the property
-            AnCustomer.PostCode = TestData;
-            //test to see that the two values are the same
-            Assert.AreEqual(AnCustomer.PostCode, TestData);
-        }
-
-        [TestMethod]
-        public void CustomeStatus()
-        {
-            //create an instance of the class we want to create
-            clsCustomer AnCustomer = new clsCustomer();
-            //create some test data to assign to the property
-            Boolean TestData = true;
-            //assign the data to the property
-            AnCustomer.Status = TestData;
-            //test to see that the two values are the same
-            Assert.AreEqual(AnCustomer.Status, TestData);
-        }
-
-    }
-
-    internal class clsCustomer
-    {
     }
 }
+
+
 

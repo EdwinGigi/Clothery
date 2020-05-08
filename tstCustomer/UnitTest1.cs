@@ -22,7 +22,6 @@ namespace tstCustomer
             Int32 TestData = 1;
             AnCustomer.Active = TestData;
             Assert.AreEqual(AnCustomer.Active, TestData);
-
         }
         [TestMethod]
         public void CustomerDOB()
@@ -37,7 +36,7 @@ namespace tstCustomer
         public void CustomerAddress()
         {
             clsAddress AnCustomer = new clsCustomer();
-            Int32 TestData = 1;
+            string TestData = "some street";
             AnCustomer.AddressNo = TestData;
             Assert.AreEqual(AnCustomer.AddressNo, TestData);
         }
@@ -57,6 +56,7 @@ namespace tstCustomer
             AnCustomer.PostCode = TestData;
             Assert.AreEqual(AnAddress.PostCode, TestData);
         }
+        [TestMethod]
         public void CustomerStatus()
         {
             clsCustomer AnCustomer = new clsCustomer();
@@ -65,7 +65,100 @@ namespace tstCustomer
             Assert.AreEqual(AnCustomer.Active, TestData);
 
         }
+        [TestMethod]
+        public void FindMethodOK()
+        {
+            clsCustomer AnCustomer = new clsAddress();
+            Boolean Found = false;
+            Int32 CustomerID = 1;
+            Found = AnCustomer.Find(CustomerID);
+            Assert.IsTrue(Found);
+        }
 
-
+        [TestMethod]
+        public void TestCustomerIDFound()
+        {
+            clsCustomer AnCustomer = new clsCustomer();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 CustomerID = 21;
+            Found = AnCustomer.Find(CustomerID);
+            if (AnCustomer.CustomerID != 21)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+        [TestMethod]
+        public void TestCustomerDOBFound()
+        {
+            clsCustomer AnCustomer = new clsCustomer();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 CustomerID = 21;
+            Found = AnCustomer.Find(CustomerID);
+            if (AnCustomer.DateAdded != Convert.ToDateTime("16/09/2015"))
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+        [TestMethod]
+        public void TestCustoerAddressFound()
+        {
+            clsCustomer AnCustomer = new clsCustomer();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 CustomerID = 21;
+            Found = AnCustomer.Find(CustomersID);
+            if (AnCustomer.Town != "Test Town")
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+        [TestMethod]
+        public void TestCustomerHomeNumber()
+        {
+            clsCustomer AnCustomer = new clsCustomer();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 CustomerID = 21;
+            Found = AnCustomer.Find(CustomerID);
+            if (AnCustomer.CustomerID != 21)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+        [TestMethod]
+        public void TestCustomerPostcode()
+        {
+            clsCustomer AnCustomer = new clsCustomer();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 CustomerID = 21;
+            Found = AnCustomer.Find(CustomerID);
+            if (AnCustomer.PostCode != "XXX XXX")
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+        [TestMethod]
+        public void TestCustomerStatus()
+        {
+            clsCustomer AnCustomer = new clsCustomer();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 CustomerID = 21;
+            Found = AnCustomer.Find(CustomerID);
+            if (AnCustomer.Active != true)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
     }
+
 }
