@@ -1,18 +1,11 @@
-﻿<head>
+﻿<table width="100%">
 
-<body>
-<table width="100%">
-<tr>
-<td><p class=menu3> Name: <br> <input type="text" name="name" size="15"></p>
-<p class=menu3>E-Mail: <br><input type="text" name="email" size="15"></p>
-<p class=menu3>Telephone: <br><input type="text" name="telephone" size="15"></p>
-<p class=menu3>Query:<br><textarea name="query" Cols="40" rows="6"></textarea></p>
-<p><input type="submit" value="Post Your Comment">
-<input type="reset"></p>
-</form>
+<td> Name: <input type="text"  size="15">
+ <br>customerId: <input type="text" size="15">
+<br>customerPostcode  : <input type="text"  size="15">
+<br>customerHomeNumber :<input type="text"  size="15">
+<br>customerDOB   :<input type="text"  size="15">
+<br>customerOnlineStatus  :<input type="text"  size="15">
+<br><input type="submit" value="Post Your Comment">
+<input type="reset">
 </td>
-
-</body>
-
-
-
