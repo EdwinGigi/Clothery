@@ -159,6 +159,65 @@ namespace tstCustomer
             }
             Assert.IsTrue(OK);
         }
+        [TestMethod]
+        public void CustomerHomeNumberMin()
+        {
+            clsAddress AnCustomer = new clsCustomer();
+            String Error = "";
+            string CustomerHomeNumber() = "a";
+            Error = AnCustomer.Valid(CustomerHomeNumber, CustomerPostCode, CustomerDOB);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void CustomerHomeNumberMinPlusOne()
+        {
+            clsAddress AnCustomer = new clsCustomer();
+            String Error = "";
+            string CustomerHomeNumber() = "aa";
+            Error = AnCustomer.Valid(CustomerHomeNumber, CustomerPostCode, CustomerDOB);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void CustomerHomeNumberMaxLessOne()
+        {
+            clsAddress AnCustomer = new clsCustomer();
+            String Error = "";
+            string CustomerHomeNumber() = "aaaa";
+            Error = AnCustomer.Valid(CustomerHomeNumber, CustomerPostCode, CustomerDOB);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void CustomerHomeNumberMax()
+        {
+            clsAddress AnCustomer = new clsCustomer();
+            String Error = "";
+            string CustomerHomeNumber() = "aaaaaa";
+            Error = AnCustomer.Valid(CustomerHomeNumber, CustomerPostCode, CustomerDOB);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void CustomerHomeNumberMid()
+        {
+            clsAddress AnCustomer = new clsCustomer();
+            String Error = "";
+            string CustomerHomeNumber() = "aaa";
+            Error = AnCustomer.Valid(CustomerHomeNumber, CustomerPostCode, CustomerDOB);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void CustomerDOBExtremeMax()
+        {
+            clsCustomer AnCustomer = new clsCustomer();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            TestDate = TestDate.AddYears(-100);
+            string CustomerDOB = TestDate.ToString();
+            Error = AnCustomer.Valid(CustomerHomeNumber, CustomerPostCode, CustomerDOB);
+            Assert.AreNotEqaul(Error, "");
+
+        }
+
     }
 
 }

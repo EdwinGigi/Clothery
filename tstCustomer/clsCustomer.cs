@@ -55,6 +55,7 @@ namespace tstCustomer
                 mCustomerHomeNumber = value;
             }
         }
+        
         private mCustomerPostcode
         public string CustomerPostcode
         {
@@ -101,10 +102,28 @@ namespace tstCustomer
                 return false;
             }
         }
+        public string Valid(string CustomerHomeNumber, string CustomerPostCode, string CustomerDOB)
+        {
+            string Error = "";
+            if (CustomerHomeNumber.Length == 0)
+            {
+                Error = Error + "the house number may not be blank;";
+            }
+            if (CustomerHomeNumber.Length > 6)
+            {
+                Error = Error + "the house number must be less than 6 numbers;";
+            }
+            return Error; 
+
+
+        }
 
 
 
     }
+
+
+
 }
 
 
