@@ -102,7 +102,7 @@ namespace tstCustomer
                 return false;
             }
         }
-        public string Valid(string CustomerHomeNumber, string CustomerPostCode, string CustomerDOB)
+        public string Valid(string CustomerHomeNumber, string CustomerPostCode, string CustomerDOB, string CustomerAddress)
         {
             string Error = "";
             if (CustomerHomeNumber.Length == 0)
@@ -113,9 +113,32 @@ namespace tstCustomer
             {
                 Error = Error + "the house number must be less than 6 numbers;";
             }
-            return Error; 
-
-
+            DateTemp = Convert.ToDateTime(CustomerDOB);
+            if (DateTemp < DateTime.Now.Date)
+            {
+                Error = Error + "the date cannot be in the past: ";
+            }
+            if (DateTemp> DateTime.Now.Date)
+            {
+                Error = Error + "The date cannot be in the future : ";
+            }
+            catch
+            {
+                Error = Error + "The date was not a valid date : ";
+            }
+            if (CustomerPostCode.Length == 0)
+            {
+                Error = Error + "The post code may not be blank : ";
+            }
+            if (CustomerAddress.Length == 0)
+            {
+                Error = Error + "The street may not be blank : ";
+            }
+            if (CustomerAddress.Length > 50)
+            {
+                Error = Error + "The street must be less than 50 characters : ";
+            }
+                return Error; 
         }
 
 

@@ -165,7 +165,7 @@ namespace tstCustomer
             clsAddress AnCustomer = new clsCustomer();
             String Error = "";
             string CustomerHomeNumber() = "a";
-            Error = AnCustomer.Valid(CustomerHomeNumber, CustomerPostCode, CustomerDOB);
+            Error = AnCustomer.Valid(CustomerHomeNumber, CustomerPostCode, CustomerDOB, CustomerAddress);
             Assert.AreEqual(Error, "");
         }
         [TestMethod]
@@ -174,7 +174,7 @@ namespace tstCustomer
             clsAddress AnCustomer = new clsCustomer();
             String Error = "";
             string CustomerHomeNumber() = "aa";
-            Error = AnCustomer.Valid(CustomerHomeNumber, CustomerPostCode, CustomerDOB);
+            Error = AnCustomer.Valid(CustomerHomeNumber, CustomerPostCode, CustomerDOB, CustomerAddress);
             Assert.AreEqual(Error, "");
         }
         [TestMethod]
@@ -183,7 +183,7 @@ namespace tstCustomer
             clsAddress AnCustomer = new clsCustomer();
             String Error = "";
             string CustomerHomeNumber() = "aaaa";
-            Error = AnCustomer.Valid(CustomerHomeNumber, CustomerPostCode, CustomerDOB);
+            Error = AnCustomer.Valid(CustomerHomeNumber, CustomerPostCode, CustomerDOB, CustomerAddress);
             Assert.AreEqual(Error, "");
         }
         [TestMethod]
@@ -192,7 +192,7 @@ namespace tstCustomer
             clsAddress AnCustomer = new clsCustomer();
             String Error = "";
             string CustomerHomeNumber() = "aaaaaa";
-            Error = AnCustomer.Valid(CustomerHomeNumber, CustomerPostCode, CustomerDOB);
+            Error = AnCustomer.Valid(CustomerHomeNumber, CustomerPostCode, CustomerDOB, CustomerAddress);
             Assert.AreEqual(Error, "");
         }
         [TestMethod]
@@ -201,7 +201,7 @@ namespace tstCustomer
             clsAddress AnCustomer = new clsCustomer();
             String Error = "";
             string CustomerHomeNumber() = "aaa";
-            Error = AnCustomer.Valid(CustomerHomeNumber, CustomerPostCode, CustomerDOB);
+            Error = AnCustomer.Valid(CustomerHomeNumber, CustomerPostCode, CustomerDOB, CustomerAddress);
             Assert.AreEqual(Error, "");
         }
         [TestMethod]
@@ -213,9 +213,196 @@ namespace tstCustomer
             TestDate = DateTime.Now.Date;
             TestDate = TestDate.AddYears(-100);
             string CustomerDOB = TestDate.ToString();
-            Error = AnCustomer.Valid(CustomerHomeNumber, CustomerPostCode, CustomerDOB);
+            Error = AnCustomer.Valid(CustomerHomeNumber, CustomerPostCode, CustomerDOB, CustomerAddress);
             Assert.AreNotEqaul(Error, "");
 
+        }
+        [TestMethod]
+        public void CustomerDOBMinLessOne()
+        {
+            clsCustomer AnCustomer = new clsCustomer();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            TestDate = TestDate.AddYears(-1);
+            string CustomerDOB = TestDate.ToString();
+            Error = AnCustomer.Valid(CustomerHomeNumber, CustomerPostCode, CustomerDOB, CustomerAddress);
+            Assert.AreNotEqaul(Error, "");
+        }
+        [TestMethod]
+        public void CustomerDOBMin()
+        {
+            clsCustomer AnCustomer = new clsCustomer();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            string DateAdded = TestDate.ToString();
+            Error = AnCustomer.Valid(CustomerHomeNumber, CustomerPostCode, CustomerDOB, CustomerAddress);
+            Assert.AreNotEqaul(Error, "");
+        }
+        [TestMethod]
+        public void CustomerDOBMinPlusOne ()
+        {
+            clsCustomer AnCustomer = new clsCustomer();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            TestDate = TestDate.AddDays(1);
+            string DateAdded = TestDate.ToString();
+            Error = AnCustomer.Valid(CustomerHomeNumber, CustomerPostCode, CustomerDOB, CustomerAddress);
+            Assert.AreNotEqaul(Error, "");
+        }
+        [TestMethod]
+        public void CustomerDOBExtremeMax()
+        {
+            clsCustomer AnCustomer = new clsCustomer();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            TestDate = TestDate.AddDays(100);
+            string DateAdded = TestDate.ToString();
+            Error = AnCustomer.Valid(CustomerHomeNumber, CustomerPostCode, CustomerDOB, CustomerAddress);
+            Assert.AreNotEqaul(Error, "");
+        }
+        [TestMethod]
+        public void CustomerDOBInvalidData()
+        {
+            clsCustomer AnCustomer = new clsCustomer();
+            String Error = "";
+            string CustomerHomeNumber = "22";
+            string CustomerPostCode = "le3 5rz";
+            string DateAdded = "this is not the date";
+            Error = AnCsutomer.Valid(CustomerHomeNumber, CustomerPostCode, CustomerDOB, CustomerAddress);
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void CustomerPostCodeMinLessOne()
+        {
+            clsCustomer AnCustomer = new clsCustomer();
+            String Error = "";
+            string CustomerPostCode = "";
+            Error = AnCsutomer.Valid(CustomerHomeNumber, CustomerPostCode, CustomerDOB, CustomerAddress);
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void CustomerPostCodeMin()
+        {
+            clsCustomer AnCustomer = new clsCustomer();
+            String Error = "";
+            string CustomerPostCode = "a";
+            Error = AnCsutomer.Valid(CustomerHomeNumber, CustomerPostCode, CustomerDOB, CustomerAddress);
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void CustomerPostCodeMinPlusOne()
+        {
+            clsCustomer AnCustomer = new clsCustomer();
+            String Error = "";
+            string CustomerPostCode = "aa";
+            Error = AnCsutomer.Valid(CustomerHomeNumber, CustomerPostCode, CustomerDOB, CustomerAddress);
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void CustomerPostCodeMaxLessOne()
+        {
+            clsCustomer AnCustomer = new clsCustomer();
+            String Error = "";
+            string CustomerPostCode = "aaaaaa";
+            Error = AnCsutomer.Valid(CustomerHomeNumber, CustomerPostCode, CustomerDOB, CustomerAddress);
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void CustomerPostCodeMax()
+        {
+            clsCustomer AnCustomer = new clsCustomer();
+            String Error = "";
+            string CustomerPostCode = "aaaaaaaaa";
+            Error = AnCsutomer.Valid(CustomerHomeNumber, CustomerPostCode, CustomerDOB, CustomerAddress);
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void CustomerPostCodeMaxPlusOne()
+        {
+            clsCustomer AnCustomer = new clsCustomer();
+            String Error = "";
+            string CustomerPostCode = "aaaaaaaa";
+            Error = AnCsutomer.Valid(CustomerHomeNumber, CustomerPostCode, CustomerDOB, CustomerAddress);
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void CustomerPostCodeMin()
+        {
+            clsCustomer AnCustomer = new clsCustomer();
+            String Error = "";
+            string CustomerPostCode = "aa";
+            Error = AnCsutomer.Valid(CustomerHomeNumber, CustomerPostCode, CustomerDOB, CustomerAddress);
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void CustomerAddressLessOne()
+        {
+            clsCustomer AnCustomer = new clsCustomer();
+            String Error = "";
+            string CustomerAddress = "";
+            Error = AnCsutomer.Valid(CustomerHomeNumber, CustomerPostCode, CustomerDOB, CustomerAddress);
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void CustomerAddressMin()
+        {
+            clsCustomer AnCustomer = new clsCustomer();
+            String Error = "";
+            string CustomerAddress = "a";
+            Error = AnCsutomer.Valid(CustomerHomeNumber, CustomerPostCode, CustomerDOB, CustomerAddress);
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void CustomerAddressMinPlusOne()
+        {
+            clsCustomer AnCustomer = new clsCustomer();
+            String Error = "";
+            string CustomerAddress = "aa";
+            Error = AnCsutomer.Valid(CustomerHomeNumber, CustomerPostCode, CustomerDOB, CustomerAddress);
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void CustomerAddressMinLessOne()
+        {
+            clsCustomer AnCustomer = new clsCustomer();
+            String Error = "";
+            string CustomerAddress = "aa";
+            Error = AnCsutomer.Valid(CustomerHomeNumber, CustomerPostCode, CustomerDOB, CustomerAddress);
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void CustomerAddressMax()
+        {
+            clsCustomer AnCustomer = new clsCustomer();
+            String Error = "";
+            string CustomerAddress = "aa";
+            CustomerAddress = CustomerAddress.PadRight(50, 'a');
+            Error = AnCsutomer.Valid(CustomerHomeNumber, CustomerPostCode, CustomerDOB, CustomerAddress);
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void CustomerAddressMaxPlusMax()
+        {
+            clsCustomer AnCustomer = new clsCustomer();
+            String Error = "";
+            string CustomerAddress = "aa";
+            CustomerAddress = CustomerAddress.PadRight(51, 'a');
+            Error = AnCsutomer.Valid(CustomerHomeNumber, CustomerPostCode, CustomerDOB, CustomerAddress);
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void CustomerAddressMid()
+        {
+            clsCustomer AnCustomer = new clsCustomer();
+            String Error = "";
+            string CustomerAddress = "";
+            CustomerAddress = CustomerAddress.PadRight(25, 'a');
+            Error = AnCsutomer.Valid(CustomerHomeNumber, CustomerPostCode, CustomerDOB, CustomerAddress);
+            Assert.AreNotEqual(Error, "");
         }
 
     }
