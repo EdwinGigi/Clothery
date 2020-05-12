@@ -11,6 +11,8 @@
         <p>
             <asp:Label ID="LblID" runat="server" Text="Product ID" Width="100px"></asp:Label>
             &nbsp;<asp:TextBox ID="TxtID" runat="server" Width="100px" ></asp:TextBox>
+            <asp:Button ID="BtnFind" runat="server" height="26px" Text="Find" width="40px" OnClick="btnFind_Click" />
+            
             <br />
             <asp:Label ID="LblName" runat="server" Text="Name" Width="100px"></asp:Label>
             &nbsp;<asp:TextBox ID="TxtName" runat="server" Width="100px" ></asp:TextBox>
@@ -29,9 +31,6 @@
             <br />  
             <asp:CheckBox ID="ChkAvailable" runat="server" style="z-index: 1;" Text="Is Available" />
             <br />        
-            Next Delivery <br /> <input name="txtNext_Delivery" size="15" type="text" />
-        </p>
-        
             <asp:Label ID="LblNext_Delivery" runat="server" Text="Next Delivery" Width="100px"></asp:Label>
             &nbsp; <asp:TextBox ID="TxtNext_Delivery" runat="server" Width="100px" ></asp:TextBox>
             <br />  

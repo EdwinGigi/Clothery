@@ -30,7 +30,7 @@ namespace Clothery_Classes
             {
                 mName = value;
             }
-           }
+        }
         private string mType;
         public string Type
         {
@@ -125,19 +125,67 @@ namespace Clothery_Classes
                 mProduct_ID = Convert.ToInt32(DB.DataTable.Rows[0]["ProductID"]);
                 mName = Convert.ToString(DB.DataTable.Rows[0]["Name"]);
                 mType = Convert.ToString(DB.DataTable.Rows[0]["Type"]);
-                mColour = Convert.ToString(DB.DataTable.Rows[0]["Cost"]);
-                mCost = Convert.ToInt32(DB.DataTable.Rows[0]["Colour"]);
+                mColour = Convert.ToString(DB.DataTable.Rows[0]["Colour"]);
+                mCost = Convert.ToInt32(DB.DataTable.Rows[0]["Cost"]);
                 mStock_Count = Convert.ToInt32(DB.DataTable.Rows[0]["StockCount"]);
                 mIs_Available = Convert.ToBoolean(DB.DataTable.Rows[0]["IsAvailable"]);
                 mNext_Delivery = Convert.ToDateTime(DB.DataTable.Rows[0]["NextDelivery"]);
                 return true;
             }
 
-            else { 
+            else {
                 return false;
             }
 
+
         }
+
+        public string Valid(int product_ID,string name,string type,string colour,int cost,int stock_Count,string next_Delivery)
+        {
+            String Error = "";
+            DateTime DateTemp;
+
+            if (name.Length == 0)
+            {
+                Error = Error + "Name cannot be blank   :";
+            }
+            if (name.Length > 20)
+            {
+                Error = Error + "Name Is too long   :";
+            }
+            if (type.Length > 20)
+            {
+                Error = Error + "Type Is too long   :";
+            }
+            if (colour.Length > 20)
+            {
+                Error = Error + "Colour Is too long   :";
+            }
+
+            if (cost < 0)
+            { 
+                Error = Error + "Cost cannot be negative    :";
+            }
+            if (stock_Count < 0)
+            {
+                Error = Error + "Stock Count cannot be negative   :";
+            }
+
+            DateTemp = Convert.ToDateTime(next_Delivery);
+            if (DateTemp < DateTime.Now.Date)
+            {
+                Error = Error + "The date cannot be in the past   :";
+            }
+
+
+
+
+            return Error;
+        }
+        
+
+
+
         
     }
 }
