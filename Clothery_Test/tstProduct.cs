@@ -5,7 +5,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace Clothery_Test
 {
     [TestClass]
-    public class tstProduct
+    public class TstProduct
     {
         [TestMethod]
         public void InstanceOK()
@@ -141,11 +141,11 @@ namespace Clothery_Test
             Boolean Found = false;
             Boolean OK = true;
 
-            Int32 Product_ID = 21;
+            Int32 Product_ID = 1;
         
             Found = AProduct.Find(Product_ID);
 
-            if (AProduct.Product_ID != 21)
+            if (AProduct.Product_ID != 1)
                 {
                 OK = false;
             }
@@ -162,7 +162,7 @@ namespace Clothery_Test
             Boolean Found = false;
             Boolean OK = true;
 
-            Int32 Product_ID = 21;
+            Int32 Product_ID = 1;
 
             Found = AProduct.Find(Product_ID);
 
@@ -182,7 +182,7 @@ namespace Clothery_Test
             Boolean Found = false;
             Boolean OK = true;
 
-            Int32 Product_ID = 21;
+            Int32 Product_ID = 1;
 
             Found = AProduct.Find(Product_ID);
 
@@ -202,7 +202,7 @@ namespace Clothery_Test
             Boolean Found = false;
             Boolean OK = true;
 
-            Int32 Product_ID = 21;
+            Int32 Product_ID = 1;
 
             Found = AProduct.Find(Product_ID);
 
@@ -222,7 +222,7 @@ namespace Clothery_Test
             Boolean Found = false;
             Boolean OK = true;
 
-            Int32 Product_ID = 21;
+            Int32 Product_ID = 1;
 
             Found = AProduct.Find(Product_ID);
 
@@ -242,7 +242,7 @@ namespace Clothery_Test
             Boolean Found = false;
             Boolean OK = true;
 
-            Int32 Product_ID = 21;
+            Int32 Product_ID = 1;
 
             Found = AProduct.Find(Product_ID);
 
@@ -262,11 +262,11 @@ namespace Clothery_Test
             Boolean Found = false;
             Boolean OK = true;
 
-            Int32 Product_ID = 21;
+            Int32 Product_ID = 1;
 
             Found = AProduct.Find(Product_ID);
 
-            if (AProduct.Is_Available != false)
+            if (AProduct.Is_Available != true)
             {
                 OK = false;
             }
@@ -282,7 +282,7 @@ namespace Clothery_Test
             Boolean Found = false;
             Boolean OK = true;
 
-            Int32 Product_ID = 21;
+            Int32 Product_ID = 1;
 
             Found = AProduct.Find(Product_ID);
 

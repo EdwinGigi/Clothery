@@ -24,7 +24,7 @@ public partial class AProduct : System.Web.UI.Page
         AProduct.Name = TxtName.Text;
         AProduct.Type = TxtType.Text;
         AProduct.Colour = TxtColour.Text;
-        AProduct.Cost = Convert.ToDecimal(TxtCost.Text);
+        AProduct.Cost = Convert.ToInt32(TxtCost.Text);
         AProduct.Stock_Count = Convert.ToInt32(TxtStock_Count.Text);
         AProduct.Is_Available = Convert.ToBoolean(ChkAvailable);
         AProduct.Next_Delivery = Convert.ToDateTime(TxtNext_Delivery.Text);
