@@ -20,17 +20,34 @@ public partial class AProduct : System.Web.UI.Page
     {
         clsProduct AProduct = new clsProduct();
 
-        AProduct.Product_ID = Convert.ToInt32(TxtID.Text);
-        AProduct.Name = TxtName.Text;
-        AProduct.Type = TxtType.Text;
-        AProduct.Colour = TxtColour.Text;
-        AProduct.Cost = Convert.ToInt32(TxtCost.Text);
-        AProduct.Stock_Count = Convert.ToInt32(TxtStock_Count.Text);
-        AProduct.Is_Available = Convert.ToBoolean(ChkAvailable);
-        AProduct.Next_Delivery = Convert.ToDateTime(TxtNext_Delivery.Text);
+        int Product_ID = Convert.ToInt32(TxtID.Text);
+        string Name = TxtName.Text;
+        string Type = TxtType.Text;
+        string Colour = TxtColour.Text;
+        int Cost = Convert.ToInt32(TxtCost.Text);
+        int Stock_Count = Convert.ToInt32(TxtStock_Count.Text);
+        string Next_Delivery = TxtNext_Delivery.Text;
 
-        Session["AProduct"] = AProduct;
-        Response.Redirect("ProductViewer.aspx");
+        string Error = "";
+        Error = AProduct.Valid(Product_ID, Name, Type, Colour, Cost, Stock_Count, Next_Delivery);
+        if (Error =="")
+        {
+            AProduct.Product_ID = Convert.ToInt32(TxtID.Text);
+            AProduct.Name = TxtName.Text;
+            AProduct.Type = TxtType.Text;
+            AProduct.Colour = TxtColour.Text;
+            AProduct.Cost = Convert.ToInt32(TxtCost.Text);
+            AProduct.Stock_Count = Convert.ToInt32(TxtStock_Count.Text);
+            AProduct.Is_Available = Convert.ToBoolean(ChkAvailable);
+            AProduct.Next_Delivery = Convert.ToDateTime(TxtNext_Delivery.Text);
+
+            Session["AProduct"] = AProduct;
+            Response.Redirect("ProductViewer.aspx");
+        }
+        else
+        {
+            LblError.Text = Error;
+        }
     }
 
 

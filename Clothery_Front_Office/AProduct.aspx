@@ -38,6 +38,8 @@
 
         <asp:Button ID="btnOK" runat="server" height="26px" Text="Add" width="61px" OnClick="btnOK_Click" />
         <asp:Button ID="btnCancel" runat="server" style="z-index: 1;" Text="Cancel" height="26px" width="117px" />
+<br />
+        <asp:Label ID="LblError" runat="server" Text="" Width="500px"></asp:Label>
 
     </form>
 </body>

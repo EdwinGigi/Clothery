@@ -690,7 +690,7 @@ namespace Clothery_Test
         }
 
         [TestMethod]
-        public void DateAddedMin()
+        public void Next_DeliveryMin()
         {
             //create an instance of the class we want to create
             clsProduct AProduct = new clsProduct();
@@ -701,14 +701,14 @@ namespace Clothery_Test
             //set the date totodays date
             TestDate = DateTime.Now.Date;
             //convert the date variable to a string variable
-            string DateAdded = TestDate.ToString();
+            string Next_Delivery = TestDate.ToString();
             //invoke the method
             Error = AProduct.Valid(Product_ID, Name, Type, Colour, Cost, Stock_Count, Next_Delivery);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
         [TestMethod]
-        public void DateAddedMinPlusOne()
+        public void Next_DeliveryMinPlusOne()
         {
             //create an instance of the class we want to create
             clsProduct AProduct = new clsProduct();
@@ -721,14 +721,23 @@ namespace Clothery_Test
             //change the date to whatever the date is plus 1 day
             TestDate = TestDate.AddDays(1);
             //convert the date variable to a string variable
-            string DateAdded = TestDate.ToString();
+            string DatNext_DeliveryeAdded = TestDate.ToString();
             //invoke the method
             Error = AProduct.Valid(Product_ID, Name, Type, Colour, Cost, Stock_Count, Next_Delivery);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
 
+        [TestMethod]
+        public void Next_DeliveryInvalidData()
+        {
+            clsProduct AProduct = new clsProduct();
+            String Error = "";
+            String Next_Delivery = "This is not a date";
 
+            Error = AProduct.Valid(Product_ID, Name, Type, Colour, Cost, Stock_Count, Next_Delivery);
+            Assert.AreNotEqual(Error, "");
+        }
 
 
 
