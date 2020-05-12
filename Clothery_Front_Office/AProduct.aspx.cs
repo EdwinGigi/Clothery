@@ -12,7 +12,7 @@ public partial class AProduct : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         clsProduct AProduct = new clsProduct();
-        AProduct = (clsProduct)Session["AProduct"];
+        //AProduct = (clsProduct)Session["AProduct"];
         Response.Write(AProduct.Product_ID);
     }
 
@@ -34,4 +34,29 @@ public partial class AProduct : System.Web.UI.Page
     }
 
 
-    }
+
+    protected void btnFind_Click(object sender, EventArgs e)
+    {
+        clsProduct AProduct = new clsProduct();
+
+        Int32 Product_ID;
+
+        Boolean Found = false;
+
+        Product_ID = Convert.ToInt32(TxtID.Text);
+
+        Found = AProduct.Find(Product_ID);
+
+        if (Found == true)
+        {
+            TxtName.Text = AProduct.Name;
+            TxtType.Text = AProduct.Type;
+            TxtColour.Text = AProduct.Colour;
+            TxtCost.Text = AProduct.Cost.ToString();
+            TxtStock_Count.Text = AProduct.Stock_Count.ToString();
+            ChkAvailable.Checked = AProduct.Is_Available;
+            TxtNext_Delivery.Text = AProduct.Next_Delivery.ToString();
+        }
+     }
+
+}
