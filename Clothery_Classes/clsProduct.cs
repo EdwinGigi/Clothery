@@ -147,39 +147,44 @@ namespace Clothery_Classes
 
             if (name.Length == 0)
             {
-                Error = Error + "Name cannot be blank   :";
+                Error = Error + "Name cannot be blank   : ";
             }
             if (name.Length > 20)
             {
-                Error = Error + "Name Is too long   :";
+                Error = Error + "Name Is too long   : ";
             }
             if (type.Length > 20)
             {
-                Error = Error + "Type Is too long   :";
+                Error = Error + "Type Is too long   : ";
             }
             if (colour.Length > 20)
             {
-                Error = Error + "Colour Is too long   :";
+                Error = Error + "Colour Is too long   : ";
             }
 
             if (cost < 0)
             { 
-                Error = Error + "Cost cannot be negative    :";
+                Error = Error + "Cost cannot be negative    : ";
             }
             if (stock_Count < 0)
             {
-                Error = Error + "Stock Count cannot be negative   :";
+                Error = Error + "Stock Count cannot be negative   : ";
             }
 
-            DateTemp = Convert.ToDateTime(next_Delivery);
-            if (DateTemp < DateTime.Now.Date)
+            try
             {
-                Error = Error + "The date cannot be in the past   :";
+                DateTemp = Convert.ToDateTime(next_Delivery);
+                if (DateTemp < DateTime.Now.Date)
+                {
+                    Error = Error + "The date cannot be in the past   : ";
+                }
+
+
             }
-
-
-
-
+            catch
+            {
+                Error = Error + "The date was not a valid date   : ";
+            }
             return Error;
         }
         
