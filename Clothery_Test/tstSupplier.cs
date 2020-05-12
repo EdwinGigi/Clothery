@@ -17,7 +17,7 @@ namespace Clothery_Test
             Assert.IsNotNull(AnSupplier);
         }
         [TestMethod]
-        public void Supplier_IDOK()
+        public void Supplier_IDPropertyOK()
         {
             //create an instance of the class we want to create
             clsSupplier AnSupplier = new clsSupplier();
@@ -30,7 +30,7 @@ namespace Clothery_Test
         }
 
         [TestMethod]
-        public void SupplierNameOK()
+        public void SupplierNamePropertyOK()
         {
             //create an instance of the class we want to create
             clsSupplier AnSupplier = new clsSupplier();
@@ -43,7 +43,7 @@ namespace Clothery_Test
         }
 
         [TestMethod]
-        public void SupplierAddressOK()
+        public void SupplierAddressPropertyOK()
         {
             //create an instance of the class we want to create
             clsSupplier AnSupplier = new clsSupplier();
@@ -56,7 +56,7 @@ namespace Clothery_Test
         }
 
         [TestMethod]
-        public void SupplierPostCodeOK()
+        public void SupplierPostCodePropertyOK()
         {
             //create an instance of the class we want to create
             clsSupplier AnSupplier = new clsSupplier();
@@ -69,7 +69,7 @@ namespace Clothery_Test
         }
 
         [TestMethod]
-        public void DescriptionOK()
+        public void DescriptionPropertyOK()
         {
             //create an instance of the class we want to create
             clsSupplier AnSupplier = new clsSupplier();
@@ -82,7 +82,7 @@ namespace Clothery_Test
         }
 
         [TestMethod]
-        public void DeliveryDateOK()
+        public void DeliveryDatePropertyOK()
         {
             //create an instance of the class we want to create
             clsSupplier AnSupplier = new clsSupplier();
@@ -95,17 +95,189 @@ namespace Clothery_Test
         }
 
         [TestMethod]
-        public void StockAvailableOK()
+        public void StockAvailablePropertyOK()
         {
             //create an instance of the class we want to create
             clsSupplier AnSupplier = new clsSupplier();
             //create some test data to assign to the property
-            Boolean TestData = false;
+            Boolean TestData = true;
             //assign the data to the property
             AnSupplier.StockAvailable = TestData;
             //test to see that the two values are the same
             Assert.AreEqual(AnSupplier.StockAvailable, TestData);
         }
+
+        [TestMethod]
+        public void FindMethodOK()
+        {
+            //create an instance of the class we want to create
+            clsSupplier AnSupplier = new clsSupplier();
+            //boolean variable to store the result of the validation
+            Boolean Found = false;
+            //test data to use the method
+            Int32 Supplier_ID = 1;
+            //invoke the method
+            Found = AnSupplier.Find(Supplier_ID);
+            //test to see that result is correct
+            Assert.IsTrue(Found);
+
+        }
+
+        [TestMethod]
+        public void TestSupplier_IDFound()
+        {
+            //create an instance of the class we want to create
+            clsSupplier AnSupplier = new clsSupplier();
+            //boolean variable to store the result of the validation
+            Boolean Found = false;
+            //boolean variable to record if data is OK (assume it is)
+            Boolean OK = true;
+            //create some test data
+            Int32 Supplier_ID = 1;
+            //invoke the method
+            Found = AnSupplier.Find(Supplier_ID);
+            //check the supplier id no
+            if (AnSupplier.Supplier_ID != 1)
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestSupplierNameFound()
+        {
+            //create an instance of the class we want to create
+            clsSupplier AnSupplier = new clsSupplier();
+            //boolean variable to store the result of the validation
+            Boolean Found = false;
+            //boolean variable to record if data is OK (assume it is)
+            Boolean OK = true;
+            //create some test data
+            Int32 Supplier_ID = 1 ;
+            //invoke the method
+            Found = AnSupplier.Find(Supplier_ID);
+            //check the supplier name
+            if (AnSupplier.SupplierName != "Toys4us")
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestSupplierPostCodeFound()
+        {
+            //create an instance of the class we want to create
+            clsSupplier AnSupplier = new clsSupplier();
+            //boolean variable to store the result of the validation
+            Boolean Found = false;
+            //boolean variable to record if data is OK (assume it is)
+            Boolean OK = true;
+            //create some test data
+            Int32 Supplier_ID = 11;
+            //invoke the method
+            Found = AnSupplier.Find(Supplier_ID);
+            //check the supplier post code
+            if (AnSupplier.SupplierPostCode != "LE2 1RQ")
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestSupplierAddressFound()
+        {
+            //create an instance of the class we want to create
+            clsSupplier AnSupplier = new clsSupplier();
+            //boolean variable to store the result of the validation
+            Boolean Found = false;
+            //boolean variable to record if data is OK (assume it is)
+            Boolean OK = true;
+            //create some test data
+            Int32 Supplier_ID = 11;
+            //invoke the method
+            Found = AnSupplier.Find(Supplier_ID);
+            //check the supplier address
+            if (AnSupplier.SupplierAddress != "Leicester")
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestStockAvailableFound()
+        {
+            //create an instance of the class we want to create
+            clsSupplier AnSupplier = new clsSupplier();
+            //boolean variable to store the result of the validation
+            Boolean Found = false;
+            //boolean variable to record if data is OK (assume it is)
+            Boolean OK = true;
+            //create some test data
+            Int32 Supplier_ID = 11;
+            //invoke the method
+            Found = AnSupplier.Find(Supplier_ID);
+            //check the supplier stock available
+            if (AnSupplier.StockAvailable != true)
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestDescriptionFound()
+        {
+            //create an instance of the class we want to create
+            clsSupplier AnSupplier = new clsSupplier();
+            //boolean variable to store the result of the validation
+            Boolean Found = false;
+            //boolean variable to record if data is OK (assume it is)
+            Boolean OK = true;
+            //create some test data
+            Int32 Supplier_ID = 11;
+            //invoke the method
+            Found = AnSupplier.Find(Supplier_ID);
+            //check the supplier description
+            if (AnSupplier.Description != "A description...")
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestDeliveryDateFound()
+        {
+            //create an instance of the class we want to create
+            clsSupplier AnSupplier = new clsSupplier();
+            //boolean variable to store the result of the validation
+            Boolean Found = false;
+            //boolean variable to record if data is OK (assume it is)
+            Boolean OK = true;
+            //create some test data
+            Int32 Supplier_ID = 11;
+            //invoke the method
+            Found = AnSupplier.Find(Supplier_ID);
+            //check the supplier date
+            if (AnSupplier.DeliveryDate != Convert.ToDateTime("16/09/2020"))
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+
+
 
     }
 }
