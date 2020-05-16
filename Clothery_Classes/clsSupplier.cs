@@ -7,10 +7,11 @@ namespace Clothery_Classes
         private Int32 mSupplier_ID;
         private DateTime mDeliveryDate;
         private String mSupplierName;
-        private Boolean mStockAvailable;
+        private Int32 mStockAvailable;
         private String mSupplierAddress;
         private String mSupplierPostCode;
         private String mDescription;
+        private Boolean mCheckStock;
 
         public int Supplier_ID {
             get
@@ -64,7 +65,7 @@ namespace Clothery_Classes
             }
         }
 
-        public bool StockAvailable {
+        public int StockAvailable {
             get
             {
                 return mStockAvailable;
@@ -85,6 +86,21 @@ namespace Clothery_Classes
             }
         }
 
+        public bool CheckStock
+        {
+             
+        get
+            {
+                return mCheckStock;
+            }
+            set
+            {
+                mCheckStock = value;
+            }
+
+        }
+
+
         public bool Find(int Supplier_ID)
         {
             //create an instance of the data connection
@@ -101,9 +117,10 @@ namespace Clothery_Classes
                 mSupplierName = Convert.ToString(DB.DataTable.Rows[0]["SupplierName"]);
                 mSupplierPostCode = Convert.ToString(DB.DataTable.Rows[0]["SupplierPostCode"]);
                 mSupplierAddress = Convert.ToString(DB.DataTable.Rows[0]["SupplierAddress"]);
-                mStockAvailable = Convert.ToBoolean(DB.DataTable.Rows[0]["StockAvailable"]);
+                mStockAvailable = Convert.ToInt32(DB.DataTable.Rows[0]["StockAvailable"]);
                 mDescription = Convert.ToString(DB.DataTable.Rows[0]["Description"]);
                 mDeliveryDate = Convert.ToDateTime(DB.DataTable.Rows[0]["DeliveryDate"]);
+                mCheckStock = Convert.ToBoolean(DB.DataTable.Rows[0]["CheckStock"]);
                 // return everything that worked as true
                 return true;
             }
