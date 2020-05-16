@@ -9,11 +9,22 @@ using System.Web.UI.WebControls;
 
 public partial class AProduct : System.Web.UI.Page
 {
+    Int32 ProductId;
     protected void Page_Load(object sender, EventArgs e)
     {
-        clsProduct AProduct = new clsProduct();
-        //AProduct = (clsProduct)Session["AProduct"];
-        Response.Write(AProduct.Product_ID);
+        ProductId = Convert.ToInt32(Session["ProductId"]);
+
+        if (IsPostBack == false)
+        {
+            if (ProductId != -1)
+            {
+                DisplayProduct();
+            }
+
+
+
+        }
+
     }
 
     protected void btnOK_Click(object sender, EventArgs e)
@@ -32,16 +43,34 @@ public partial class AProduct : System.Web.UI.Page
         Error = AProduct.Valid(Product_ID, Name, Type, Colour, Cost, Stock_Count, Next_Delivery);
         if (Error =="")
         {
-            AProduct.Product_ID = Convert.ToInt32(TxtID.Text);
-            AProduct.Name = TxtName.Text;
+            AProduct.Product_ID = ProductId;
+
+           AProduct.Name = TxtName.Text;
             AProduct.Type = TxtType.Text;
             AProduct.Colour = TxtColour.Text;
             AProduct.Cost = Convert.ToInt32(TxtCost.Text);
             AProduct.Stock_Count = Convert.ToInt32(TxtStock_Count.Text);
-            AProduct.Is_Available = Convert.ToBoolean(ChkAvailable);
+            AProduct.Is_Available = Convert.ToBoolean(ChkAvailable.Checked);
             AProduct.Next_Delivery = Convert.ToDateTime(TxtNext_Delivery.Text);
 
-            Session["AProduct"] = AProduct;
+            clsProductCollection ProductList = new clsProductCollection();
+
+            if (ProductId == -1)
+            {
+                ProductList.ThisProduct = AProduct;
+                ProductList.Add();
+            }
+            else
+            {
+                ProductList.ThisProduct.Find(ProductId);
+                ProductList.ThisProduct = AProduct;
+
+                Response.Redirect("ProductList.aspx");
+            }
+
+
+            
+
             Response.Redirect("ProductViewer.aspx");
         }
         else
@@ -74,6 +103,31 @@ public partial class AProduct : System.Web.UI.Page
             ChkAvailable.Checked = AProduct.Is_Available;
             TxtNext_Delivery.Text = AProduct.Next_Delivery.ToString();
         }
+
      }
+
+    void DisplayProduct()
+    {
+        clsProductCollection ProductList = new clsProductCollection();
+        ProductList.ThisProduct.Find(ProductId);
+
+        TxtName.Text = ProductList.ThisProduct.Name;
+        TxtType.Text = ProductList.ThisProduct.Type;
+        TxtColour.Text = ProductList.ThisProduct.Colour;
+        TxtCost.Text = ProductList.ThisProduct.Cost.ToString();
+        TxtStock_Count.Text = ProductList.ThisProduct.Stock_Count.ToString();
+        ChkAvailable.Checked = ProductList.ThisProduct.Is_Available;
+        TxtNext_Delivery.Text = ProductList.ThisProduct.Next_Delivery.ToString();
+
+
+
+    }
+
+
+
+
+
+
+
 
 }
