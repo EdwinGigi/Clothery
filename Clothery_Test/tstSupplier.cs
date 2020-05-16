@@ -100,11 +100,24 @@ namespace Clothery_Test
             //create an instance of the class we want to create
             clsSupplier AnSupplier = new clsSupplier();
             //create some test data to assign to the property
-            Boolean TestData = true;
+            Int32 TestData = 1;
             //assign the data to the property
             AnSupplier.StockAvailable = TestData;
             //test to see that the two values are the same
             Assert.AreEqual(AnSupplier.StockAvailable, TestData);
+        }
+
+        [TestMethod]
+        public void CheckStockPropertyOK()
+        {
+            //create an instance of the class we want to create
+            clsSupplier AnSupplier = new clsSupplier();
+            //create some test data to assign to the property
+            Boolean TestData = true;
+            //assign the data to the property
+            AnSupplier.CheckStock = TestData;
+            //test to see that the two values are the same
+            Assert.AreEqual(AnSupplier.CheckStock, TestData);
         }
 
         [TestMethod]
@@ -159,7 +172,7 @@ namespace Clothery_Test
             //invoke the method
             Found = AnSupplier.Find(Supplier_ID);
             //check the supplier name
-            if (AnSupplier.SupplierName != "Toys4us")
+            if (AnSupplier.SupplierName != "Toys")
             {
                 OK = false;
             }
@@ -177,11 +190,11 @@ namespace Clothery_Test
             //boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data
-            Int32 Supplier_ID = 11;
+            Int32 Supplier_ID = 1;
             //invoke the method
             Found = AnSupplier.Find(Supplier_ID);
             //check the supplier post code
-            if (AnSupplier.SupplierPostCode != "LE2 1RQ")
+            if (AnSupplier.SupplierPostCode != "LE2 6TB")
             {
                 OK = false;
             }
@@ -199,7 +212,7 @@ namespace Clothery_Test
             //boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data
-            Int32 Supplier_ID = 11;
+            Int32 Supplier_ID = 1;
             //invoke the method
             Found = AnSupplier.Find(Supplier_ID);
             //check the supplier address
@@ -221,11 +234,33 @@ namespace Clothery_Test
             //boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data
-            Int32 Supplier_ID = 11;
+            Int32 Supplier_ID = 1;
             //invoke the method
             Found = AnSupplier.Find(Supplier_ID);
             //check the supplier stock available
-            if (AnSupplier.StockAvailable != true)
+            if (AnSupplier.StockAvailable != 1)
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestCheckStockFound()
+        {
+            //create an instance of the class we want to create
+            clsSupplier AnSupplier = new clsSupplier();
+            //boolean variable to store the result of the validation
+            Boolean Found = false;
+            //boolean variable to record if data is OK (assume it is)
+            Boolean OK = true;
+            //create some test data
+            Int32 Supplier_ID = 1;
+            //invoke the method
+            Found = AnSupplier.Find(Supplier_ID);
+            //check the supplier stock available
+            if (AnSupplier.CheckStock != true)
             {
                 OK = false;
             }
@@ -243,11 +278,11 @@ namespace Clothery_Test
             //boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data
-            Int32 Supplier_ID = 11;
+            Int32 Supplier_ID = 1;
             //invoke the method
             Found = AnSupplier.Find(Supplier_ID);
             //check the supplier description
-            if (AnSupplier.Description != "A description...")
+            if (AnSupplier.Description != "We are the best")
             {
                 OK = false;
             }
@@ -265,11 +300,11 @@ namespace Clothery_Test
             //boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data
-            Int32 Supplier_ID = 11;
+            Int32 Supplier_ID = 1;
             //invoke the method
             Found = AnSupplier.Find(Supplier_ID);
             //check the supplier date
-            if (AnSupplier.DeliveryDate != Convert.ToDateTime("16/09/2020"))
+            if (AnSupplier.DeliveryDate != Convert.ToDateTime("05/05/2020"))
             {
                 OK = false;
             }
