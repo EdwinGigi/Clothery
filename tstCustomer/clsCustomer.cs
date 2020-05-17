@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Text;
 
 
@@ -69,6 +70,10 @@ namespace tstCustomer
             }
         }
         private Boolean mCustomerStatus;
+        private int mCustomrID;
+        private string mCustomerPostcode;
+        internal int Active;
+
         public bool CustomerStatus
         {
             get
@@ -81,6 +86,10 @@ namespace tstCustomer
             }
         }
 
+        public DateTime DateTemp { get; private set; }
+        public DateTime DateAdded { get; internal set; }
+        public string PostCode { get; internal set; }
+        public string Town { get; internal set; }
 
         public bool Find(int CustomerID)
         {
@@ -89,7 +98,7 @@ namespace tstCustomer
             DB.Execute("spoc_tblCustomer_FilterByCustomerID");
             if (DB.Count == 1)
             {
-                mCustomerID = Convert.ToInt32(DB.Dataable.rows[0]["CustomerId"]);
+                mCustomerID = Convert.ToInt32(DB.DataTable.rows[0]["CustomerId"]);
                 mCustomerDOB = Convert.ToDateTime(DB.DataTable.Rows[0]["CustomerDOB"]);
                 mCustomerAddress = Convert.ToString(DB.DataTable.Rows[0]["CustomerAddress"]);
                 mCustomerHomeNumber = Convert.ToInt32(DB.DataTable.Rows[0]["CustomerHomeNumber"]);
@@ -141,11 +150,50 @@ namespace tstCustomer
                 return Error; 
         }
 
+        internal bool Find(object customersID)
+        {
+            throw new NotImplementedException();
+        }
 
+        public static implicit operator clsCustomer(clsAddress v)
+        {
+            throw new NotImplementedException();
+        }
 
+        internal string Valid(Action customerHomeNumber, object customerPostCode, string customerDOB, Action customerAddress)
+        {
+            throw new NotImplementedException();
+        }
+
+        internal string Valid(Action customerHomeNumber, object customerPostCode, Action customerDOB, Action customerAddress)
+        {
+            throw new NotImplementedException();
+        }
+    }
+    
+    public clsCustomerCollection()
+    {
+        clsCustomer TestItem = new clsCustomer();
+        TestItem.CustomerStatus = true;
+        TestItem.CustomerID = 1;
+        TestItem.CustomerDOB = DateTime.Now.Date;
+        TestItem.CustomerAddress = "aaaaaaa";
+        TestItem.CustomerHomeNumber = "323w";
+        TestItem.CustomerPostcode = "le4 5es";
+        mCustomerList.(TestItem);
+        TestItem = new clsCustomer();
+        TestItem.CustomerStatus = true;
+        TestItem.CustomerID = 1;
+        TestItem.CustomerDOB = DateTime.Now.Date;
+        TestItem.CustomerAddress = "aaaaaaa";
+        TestItem.CustomerHomeNumber = "323w";
+        TestItem.CustomerPostcode = "le4 5es";
+        mCustomerList.(TestItem);
     }
 
-
+    internal class mCustomerList
+    {
+    }
 
 }
 

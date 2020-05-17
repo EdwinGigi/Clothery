@@ -49,12 +49,23 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="clsAddress.cs" />
     <Compile Include="clsCustomer.cs" />
+    <Compile Include="clsDataConnection.cs" />
+    <Compile Include="List.cs" />
+    <Compile Include="mCustomerPostcode.cs" />
+    <Compile Include="tstCustomerCollection.cs" />
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Clothery_Classes\Clothery_Classes.csproj">
+      <Project>{0F63C16B-7B69-4E9C-B37E-0D60A3A35F40}</Project>
+      <Name>Clothery_Classes</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,12 +1,17 @@
 ﻿using System;
+using Clothery_Classes;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Class_Library;
 
 namespace tstCustomer
 {
     [TestClass]
     public class UnitTest1
     {
+        public object AnAddress { get; private set; }
+        public int CustomersID { get; private set; }
+        public object CustomerPostCode { get; private set; }
+        public object AnCsutomer { get; private set; }
+
         [TestMethod]
         public void InstanceOK()
         {
@@ -153,7 +158,10 @@ namespace tstCustomer
             Boolean OK = true;
             Int32 CustomerID = 21;
             Found = AnCustomer.Find(CustomerID);
-            if (AnCustomer.Active != true)
+            if (AnCustomer.Active == true)
+            {
+            }
+            else
             {
                 OK = false;
             }
@@ -214,7 +222,7 @@ namespace tstCustomer
             TestDate = TestDate.AddYears(-100);
             string CustomerDOB = TestDate.ToString();
             Error = AnCustomer.Valid(CustomerHomeNumber, CustomerPostCode, CustomerDOB, CustomerAddress);
-            Assert.AreNotEqaul(Error, "");
+            Assert.AreNotEqual(Error, "");
 
         }
         [TestMethod]
@@ -227,7 +235,7 @@ namespace tstCustomer
             TestDate = TestDate.AddYears(-1);
             string CustomerDOB = TestDate.ToString();
             Error = AnCustomer.Valid(CustomerHomeNumber, CustomerPostCode, CustomerDOB, CustomerAddress);
-            Assert.AreNotEqaul(Error, "");
+            Assert.AreNotEqual(Error, "");
         }
         [TestMethod]
         public void CustomerDOBMin()
@@ -238,7 +246,7 @@ namespace tstCustomer
             TestDate = DateTime.Now.Date;
             string DateAdded = TestDate.ToString();
             Error = AnCustomer.Valid(CustomerHomeNumber, CustomerPostCode, CustomerDOB, CustomerAddress);
-            Assert.AreNotEqaul(Error, "");
+            Assert.AreNotEqual(Error, "");
         }
         [TestMethod]
         public void CustomerDOBMinPlusOne ()
@@ -250,7 +258,7 @@ namespace tstCustomer
             TestDate = TestDate.AddDays(1);
             string DateAdded = TestDate.ToString();
             Error = AnCustomer.Valid(CustomerHomeNumber, CustomerPostCode, CustomerDOB, CustomerAddress);
-            Assert.AreNotEqaul(Error, "");
+            Assert.AreNotEqual(Error, "");
         }
         [TestMethod]
         public void CustomerDOBExtremeMax()
@@ -262,7 +270,7 @@ namespace tstCustomer
             TestDate = TestDate.AddDays(100);
             string DateAdded = TestDate.ToString();
             Error = AnCustomer.Valid(CustomerHomeNumber, CustomerPostCode, CustomerDOB, CustomerAddress);
-            Assert.AreNotEqaul(Error, "");
+            Assert.AreNotEqual(Error, "");
         }
         [TestMethod]
         public void CustomerDOBInvalidData()
@@ -404,6 +412,62 @@ namespace tstCustomer
             Error = AnCsutomer.Valid(CustomerHomeNumber, CustomerPostCode, CustomerDOB, CustomerAddress);
             Assert.AreNotEqual(Error, "");
         }
+        [TestMethod]
+        public void CustomerListOk()
+        {
+            clsCustomerCollection AllCustomer = new clsCustomerCollection();
+            List<clsCustomer> TestList = new List<clsCustomer>();
+            clsCustomer TestItem = new clsCustomer();
+            TestItem.CustomerStatus = true;
+            TestItem.CustomerID = 1;
+            TestItem.CustomerDOB = DateTime.Now.Date;
+            TestItem.CustomerAddress = "aaaaaaa";
+            TestItem.CustomerHomeNumber = "321s";
+            TestItem.CustomerPostcode = "le4 5es";
+
+            TestList.Add(TestItem);
+            AllCustomer.CustomerList = TestList;
+            Assert.AreEqual(AllCustomer.CustomerList, TestList);
+        }
+        [TestMethod]
+        public void CountCustomerOk()
+        {
+            clsCustomerCollection AllCustomer = new clsCustomerCollection();
+            Int32 SomeCount = 0;
+            AllCustomer.Count = SomeCount;
+            Assert.AreEqual(AllCustomer.Count, SomeCount);
+        }
+        [TestMethod]
+        public void ThisCustomerOk()
+        {
+            clsCustomerCollection AllCustomer = new clsCustomerCollection();
+            clsCustomer TestCustomer = new clsCustomer();
+            TestCustomer.CustomerStatus = true;
+            TestCustomer.CustomerID = 1;
+            TestCustomer.CustomerDOB = DateTime.Now.Date;
+            TestCustomer.CustomerAddress = "aaaaaaa";
+            TestCustomer.CustomerHomeNumber = "321s";
+            TestCustomer.CustomerPostcode = "le4 5es";
+            AllCustomer.ThisCustomer = TestCustomer;
+            Assert.AreEqual(AllCustomer.ThisCustomer, TestCustomer);
+        }
+        [TestMethod]
+        public void ListAndCountOk()
+        {
+            clsCustomerCollection AllCustomer = new clsCustomerCollection();
+            List<clsCustomer> TestList = new List<clsCustomer>();
+            clsCustomer TestItem = new clsCustomer();
+            TestItem.CustomerStatus = true;
+            TestItem.CustomerID = 1;
+            TestItem.CustomerDOB = DateTime.Now.Date;
+            TestItem.CustomerAddress = "aaaaaaa";
+            TestItem.CustomerHomeNumber = "22a";
+            TestItem.CustomerPostcode = "le4 5es";
+            TestList.Add(TestItem);
+            AllCustomer.CustomerList = TestList;
+            Assert.AreEqual(AllCustomer.Count, TestList.Count);
+        }
+
 
     }
 
