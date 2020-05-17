@@ -10,7 +10,6 @@ public partial class OrderList : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
     }
     //event handler for the add button
     protected void btnAdd_Click(object sender, EventArgs e)

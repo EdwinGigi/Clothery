@@ -29,6 +29,10 @@ public partial class AnOrder : System.Web.UI.Page
 
     protected void btnCancel_Click(object sender, EventArgs e)
     {
+        txtOrderId.Text = "";
+        txtCustomerId.Text = "";
+        txtOrderDate.Text = "";
+        txtShippingAddress.Text = "";
 
     }
 
